@@ -12,6 +12,6 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(post);
     } catch(error) {
         console.error("投稿作成に失敗しました:", error);
-        return NextResponse.json({ error: '投稿作成失敗' }, { status: 400 });
+        return NextResponse.json({ error: '投稿作成失敗' }, { status: 500 });
     }
 }

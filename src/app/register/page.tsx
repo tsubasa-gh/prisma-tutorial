@@ -10,8 +10,7 @@ const Register = () => {
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault(); // フォームのデフォルトの送信動作を停止
-        console.log({ name, email, password })
+        e.preventDefault(); // フォームのデフォルトの送信動作（フォームデータをサーバーに送信しページをリロード）を停止する必要アリ
     
         const response = await fetch('/api/register', { // '/api/register' エンドポイントにデータを送信
             method: 'POST',
@@ -23,7 +22,6 @@ const Register = () => {
             router.push('/');
         } else {
             console.log('登録失敗');
-            console.log(response);
         };
     };
 
