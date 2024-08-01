@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 
+type UserRequestBody = {
+    name: string;
+    email: string;
+    password: string;
+};
+
 export async function POST(req: NextRequest) {
     try {
-        const { name, email, password } = await req.json(); // jsonメソッドでリクエストボディのJSONデータを解析し、JSオブジェクトに変換
+        const { name, email, password }: UserRequestBody = await req.json(); // jsonメソッドでリクエストボディのJSONデータを解析し、JSオブジェクトに変換
 
         const user = await prisma.user.create({
             data: {
